@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
 
 namespace AkademineIS
@@ -17,6 +18,10 @@ namespace AkademineIS
         {
             InitializeComponent();
         }
+
+        users user = new users();
+        internal string vardas;
+        internal string pass;
 
         private void Login_Form2_Load(object sender, EventArgs e)
         {
@@ -43,8 +48,9 @@ namespace AkademineIS
 
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        public void buttonLogin_Click(object sender, EventArgs e)
         {
+
             MY_DB db = new MY_DB();
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
@@ -53,19 +59,30 @@ namespace AkademineIS
 
             command.Parameters.Add("@usn",MySqlDbType.VarChar).Value = textBoxUsername.Text;
             command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = textBoxPassword.Text;
+            vardas = textBoxUsername.Text;
+            pass = textBoxPassword.Text;
             adapter.SelectCommand = command;
 
             adapter.Fill(table);
+            
 
             if(table.Rows.Count > 0)
             {
-                this.DialogResult = DialogResult.OK;
+
+                    this.DialogResult = DialogResult.OK;
+                
             }
             else
             {
                 MessageBox.Show("Invalid Username or Password", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
+     
+
+
+
+
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {

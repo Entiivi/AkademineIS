@@ -155,9 +155,9 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBoxUsername;
         private TextBox textBoxPassword;
         private Button buttonLogin;
         private Button buttonCancel;
+        internal TextBox textBoxUsername;
     }
 }

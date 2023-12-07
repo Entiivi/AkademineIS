@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using Org.BouncyCastle.Asn1.Ocsp;
 namespace AkademineIS
 {
@@ -77,6 +79,7 @@ namespace AkademineIS
 
             return table;
         }
+
 
         public bool istrintiIvert(int sid, int did)
         {
